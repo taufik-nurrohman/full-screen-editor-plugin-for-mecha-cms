@@ -1,0 +1,10 @@
+Title: Editor Mode Layar Penuh
+Author: Taufik Nurrohman
+URL: http://latitudu.com
+Version: 1.0.0
+
+====
+
+> Menulis posting blog dalam mode layar penuh.
+
+Membantu anda fokus hanya kepada konten.

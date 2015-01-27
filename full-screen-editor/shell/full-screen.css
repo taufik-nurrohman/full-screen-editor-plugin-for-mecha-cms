@@ -1,0 +1,76 @@
+.MTE-editor-is-expanded,
+.MTE-editor-is-expanded body {
+  height:100%;
+  min-height:100%;
+  max-height:100%;
+  position:static;
+  overflow:hidden;
+}
+
+.MTE-editor-is-expanded .full-screen-wrapper {
+  position:fixed !important;
+  position:absolute;
+  top:30px; /* <= adjust this value to fit the toolbar height */
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:9998;
+  background-color:white;
+}
+
+.MTE-editor-is-expanded .editor-toolbar {
+  position:absolute;
+  right:0;
+  bottom:100%;
+  left:0;
+  background:inherit;
+  padding:2px;
+}
+
+.MTE-editor-is-expanded .full-screen-wrapper textarea {
+  display:block;
+  width:100%;
+  height:100%;
+  resize:none;
+  margin:0;
+  padding:1.2em 1.6em;
+  border:none;
+  font-size:150%;
+  line-height:2em;
+}
+
+.MTE-editor-is-expanded textarea::-webkit-input-placeholder {line-height:2em}
+.MTE-editor-is-expanded textarea::-moz-placeholder {line-height:2em}
+.MTE-editor-is-expanded textarea:-moz-placeholder {line-height:2em}
+.MTE-editor-is-expanded textarea:-ms-input-placeholder {line-height:2em}
+.MTE-editor-is-expanded textarea:placeholder {line-height:2em}
+
+.MTE-editor-is-expanded .full-screen-actions {
+  float:none;
+  display:block;
+  width:auto;
+  margin:0;
+  padding:0;
+  position:fixed !important;
+  position:absolute;
+  top:2px;
+  right:0;
+  z-index:9998;
+}
+
+.MTE-editor-is-expanded .full-screen-actions .btn {
+  display:block;
+  float:left;
+  margin:0 2px 0 0;
+  padding:0 9px;
+  border:none;
+  font-size:10px; /* <= adjust this value to fit the toolbar height */
+  height:26px; /* <= adjust this value to fit the toolbar height */
+  line-height:26px; /* <= adjust this value to fit the toolbar height */
+  text-transform:uppercase;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+}
+
+.MTE-editor-is-expanded .author-banner {display:none}

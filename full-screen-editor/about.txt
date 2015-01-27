@@ -1,0 +1,10 @@
+Title: Full Screen Editor
+Author: Taufik Nurrohman
+URL: http://latitudu.com
+Version: 1.0.0
+
+====
+
+> Writing blog posts in full screen mode.
+
+Helps you focus just on the content.

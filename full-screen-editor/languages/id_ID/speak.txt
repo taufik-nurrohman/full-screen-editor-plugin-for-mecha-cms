@@ -1,0 +1,2 @@
+plugin_fse_title_full_screen_in: Masuk Mode Layar Penuh
+plugin_fse_title_full_screen_out: Keluar Mode Layar Penuh
