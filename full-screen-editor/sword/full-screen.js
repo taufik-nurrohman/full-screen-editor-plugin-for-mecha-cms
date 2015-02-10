@@ -1,10 +1,10 @@
-(function($, base) {
+(function(w, d, base) {
     if (typeof base.composer == "undefined") return;
     var is_expand = false,
-        the_base = document.documentElement,
+        the_base = d.documentElement,
         the_base_class = the_base.className,
-        the_actions = document.getElementsByName('action')[0].parentNode,
-        the_languages = base.composer.grip.area.getAttribute('data-plugin-fse-languages').split('|');
+        the_actions = d.getElementsByName('action')[0].parentNode,
+        the_languages = base.languages.MTE.others.plugin_fse_title_full_screen || ['Enter Full Screen Mode', 'Exit Full Screen Mode'];
     the_actions.className = the_actions.className + ' full-screen-actions';
     base.composer.button('expand', {
         title: the_languages[0],
@@ -12,6 +12,7 @@
         click: function(e, editor) {
             var the_clicked = e.target.getAttribute('href') ? e.target : e.target.parentNode,
                 the_icon = the_clicked.firstChild,
+                the_outer = the_clicked.parentNode.parentNode,
                 s = editor.grip.selection();
             editor.grip.area.removeAttribute('style');
             editor.grip.select(s.start, s.end);
@@ -20,14 +21,28 @@
                 the_clicked.hash = 'compress';
                 the_clicked.title = the_languages[1];
                 the_icon.className = the_icon.className.replace(/-expand/, '-compress');
+                the_outer.className = the_outer.className + ' active';
                 is_expand = true;
+                base.fire('on_full_screen_enter', {
+                    'event': e,
+                    'editor': editor
+                });
             } else {
                 the_base.className = the_base_class;
                 the_clicked.hash = 'expand';
                 the_clicked.title = the_languages[0];
                 the_icon.className = the_icon.className.replace(/-compress/, '-expand');
+                the_outer.className = the_outer.className.replace(/ active/, "");
                 is_expand = false;
+                base.fire('on_full_screen_exit', {
+                    'event': e,
+                    'editor': editor
+                });
             }
+            base.fire('on_full_screen_toggle', {
+                'event': e,
+                'editor': editor
+            });
         }
     });
-})(Zepto, DASHBOARD);
+})(window, document, DASHBOARD);

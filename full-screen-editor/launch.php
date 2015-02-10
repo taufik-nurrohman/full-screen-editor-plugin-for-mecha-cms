@@ -1,29 +1,24 @@
 <?php
 
-if(
-    strpos($config->url_current, $config->url . '/' . $config->manager->slug . '/article/') === 0 ||
-    strpos($config->url_current, $config->url . '/' . $config->manager->slug . '/page/') === 0 ||
-    strpos($config->url_current, $config->url . '/' . $config->manager->slug . '/comment/') === 0
-) {
+if($config->page_type == 'manager') {
 
     Weapon::add('shell_after', function() {
         echo Asset::stylesheet('cabinet/plugins/' . basename(__DIR__) . '/shell/full-screen.css');
     });
 
+    $speak = Config::speak();
+
+    Config::merge('DASHBOARD.languages.MTE.others', array(
+        'plugin_fse_title_full_screen' => array($speak->plugin_fse_title_full_screen_in, $speak->plugin_fse_title_full_screen_out)
+    ));
+
     Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
-        $speak = Config::speak();
-        echo '<script>
-(function($, base) {
-    var $area = $(\'.MTE\');
-    $area.attr(\'data-plugin-fse-languages\', \'' . $speak->plugin_fse_title_full_screen_in . '|' . $speak->plugin_fse_title_full_screen_out . '\');
-    $area.wrap(\'<div class="full-screen-wrapper"></div>\');
-})(Zepto, DASHBOARD);
-</script>';
-    }, 9);
+        echo '<script>!function(a,b){for(var d,c=b.getElementsByTagName("textarea"),e=0,f=c.length;f>e;++e)!/(^| )MTE-ignore( |$)/.test(c[e].className)&&(d=b.createElement("span"),d.className="full-screen-wrapper full-screen-wrapper-"+(e+1),c[e].parentNode.appendChild(d),d.appendChild(c[e]))}(window,document);</script>';
+    }, 1);
 
     Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
         echo Asset::javascript('cabinet/plugins/' . basename(__DIR__) . '/sword/full-screen.js');
-    }, 11);
+    }, 20);
 
 }
 
