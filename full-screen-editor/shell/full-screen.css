@@ -25,7 +25,7 @@
   bottom:100%;
   left:0;
   background:inherit;
-  padding:2px;
+  padding:2px 2px 0;
 }
 
 .MTE-editor-is-expanded .full-screen-wrapper.active textarea {

@@ -1,5 +1,5 @@
 (function(w, d, base) {
-    if (typeof base.composer == "undefined") return;
+    if (typeof base.composer === "undefined") return;
     var is_expand = false,
         the_base = d.documentElement,
         the_base_class = the_base.className,
@@ -12,10 +12,10 @@
         click: function(e, editor) {
             var the_clicked = e.target.getAttribute('href') ? e.target : e.target.parentNode,
                 the_icon = the_clicked.firstChild,
-                the_outer = the_clicked.parentNode.parentNode,
-                s = editor.grip.selection();
+                the_outer = editor.grip.area.parentNode;
+            editor.grip.select(0, 0);
+            editor.grip.area.scrollTop = 0;
             editor.grip.area.removeAttribute('style');
-            editor.grip.select(s.start, s.end);
             if (!is_expand) {
                 the_base.className = the_base_class + ' MTE-editor-is-expanded';
                 the_clicked.hash = 'compress';
