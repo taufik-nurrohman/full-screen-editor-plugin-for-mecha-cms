@@ -1,6 +1,6 @@
 <?php
 
-if($config->page_type == 'manager') {
+if($config->page_type === 'manager') {
 
     Weapon::add('shell_after', function() {
         echo Asset::stylesheet('cabinet/plugins/' . basename(__DIR__) . '/shell/full-screen.css');
@@ -35,7 +35,7 @@ Route::accept($config->manager->slug . '/plugin/' . basename(__DIR__) . '/update
     if($request = Request::post()) {
         Guardian::checkToken($request['token']);
         File::write($request['css'])->saveTo(PLUGIN . DS . basename(__DIR__) . DS . 'shell' . DS . 'full-screen.css');
-        Notify::success(Config::speak('notify_success_updated', array($speak->plugin)));
+        Notify::success(Config::speak('notify_success_updated', $speak->plugin));
         Guardian::kick(dirname($config->url_current));
     }
 });
