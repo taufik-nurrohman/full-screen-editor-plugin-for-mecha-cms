@@ -1,2 +1,3 @@
-plugin_fse_title_full_screen_in: Enter Full Screen Mode
-plugin_fse_title_full_screen_out: Exit Full Screen Mode
+plugin_full_screen_editor:
+  0: Enter Full Screen Mode
+  1: Exit Full Screen Mode

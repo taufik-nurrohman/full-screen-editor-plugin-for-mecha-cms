@@ -1,0 +1,72 @@
+.MTE-editor-is-expanded,
+.MTE-editor-is-expanded body {
+  height:100%;
+  min-height:100%;
+  max-height:100%;
+  position:static;
+  overflow:hidden;
+}
+
+.MTE-editor-is-expanded .full-screen-wrapper.active {
+  position:fixed !important;
+  position:absolute;
+  top:2em; /* <= adjust this value to fit the toolbar height */
+  right:0;
+  bottom:0;
+  left:0;
+  margin-top:4px; /* <= adjust this value to fit the toolbar height */
+  z-index:9998;
+  background-color:white;
+}
+
+.MTE-editor-is-expanded .editor-toolbar {
+  position:absolute;
+  right:0;
+  bottom:100%;
+  left:0;
+  background:inherit;
+  padding:2px 2px 0;
+}
+
+.MTE-editor-is-expanded .full-screen-wrapper.active textarea {
+  display:block;
+  width:100%;
+  height:100%;
+  resize:none;
+  margin:0;
+  padding:1.1282051282051282em 1.5384615384615385em;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+  border:none;
+}
+
+.MTE-editor-is-expanded .full-screen-actions {
+  float:none;
+  display:block;
+  width:auto;
+  margin:0;
+  padding:0;
+  position:fixed !important;
+  position:absolute;
+  top:2px;
+  right:0;
+  z-index:9998;
+}
+
+.MTE-editor-is-expanded .full-screen-actions .btn {
+  display:block;
+  float:left;
+  margin:0 2px 0 0;
+  padding:0 .9em;
+  border:none;
+  font-size:76.92307692307693%; /* <= adjust this value to fit the toolbar height */
+  height:2.5999999999999996em; /* <= adjust this value to fit the toolbar height */
+  line-height:2.5999999999999996em; /* <= adjust this value to fit the toolbar height */
+  text-transform:uppercase;
+  -webkit-border-radius:0;
+  -moz-border-radius:0;
+  border-radius:0;
+}
+
+.MTE-editor-is-expanded .widget-manager-bar {display:none}

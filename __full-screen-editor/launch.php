@@ -1,21 +1,21 @@
 <?php
 
 Weapon::add('shell_after', function() {
-    echo Asset::stylesheet('cabinet/plugins/' . basename(__DIR__) . '/shell/full-screen.css');
+    echo Asset::stylesheet('cabinet/plugins/' . File::B(__DIR__) . '/assets/shell/button.css');
 });
 
 $speak = Config::speak();
 
-Config::merge('DASHBOARD.languages.MTE.others', array(
-    'plugin_fse_title_full_screen' => array($speak->plugin_fse_title_full_screen_in, $speak->plugin_fse_title_full_screen_out)
+Config::merge('DASHBOARD.languages.MTE', array(
+    'plugin_full_screen_editor' => Mecha::A($speak->plugin_full_screen_editor)
 ));
 
 Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
-    echo '<script>!function(a,b){for(var d,c=b.getElementsByTagName("textarea"),e=0,f=c.length;f>e;++e)!/(^| )MTE-ignore( |$)/.test(c[e].className)&&(d=b.createElement("span"),d.className="full-screen-wrapper full-screen-wrapper-"+(e+1),c[e].parentNode.appendChild(d),d.appendChild(c[e]))}(window,document);</script>';
+    echo '<script>!function(a,b){for(var d,c=b.getElementsByTagName("textarea"),e=0,f=c.length;f>e;++e)!/(^|\s)MTE-ignore(\s|$)/.test(c[e].className)&&(d=b.createElement("span"),d.className="full-screen-wrapper full-screen-wrapper-"+(e+1),c[e].parentNode.appendChild(d),d.appendChild(c[e]))}(window,document);</script>';
 }, 1);
 
 Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
-    echo Asset::javascript('cabinet/plugins/' . basename(__DIR__) . '/sword/full-screen.js');
+    echo Asset::javascript('cabinet/plugins/' . File::B(__DIR__) . '/assets/sword/button.js');
 }, 20);
 
 
@@ -24,14 +24,14 @@ Weapon::add('SHIPMENT_REGION_BOTTOM', function() {
  * --------------
  */
 
-Route::accept($config->manager->slug . '/plugin/' . basename(__DIR__) . '/update', function() use($config, $speak) {
+Route::accept($config->manager->slug . '/plugin/' . File::B(__DIR__) . '/update', function() use($config, $speak) {
     if( ! Guardian::happy()) {
         Shield::abort();
     }
     if($request = Request::post()) {
         Guardian::checkToken($request['token']);
-        File::write($request['css'])->saveTo(PLUGIN . DS . basename(__DIR__) . DS . 'shell' . DS . 'full-screen.css');
+        File::write($request['css'])->saveTo(PLUGIN . DS . File::B(__DIR__) . DS . 'assets' . DS . 'shell' . DS . 'button.css');
         Notify::success(Config::speak('notify_success_updated', $speak->plugin));
-        Guardian::kick(dirname($config->url_current));
+        Guardian::kick(File::D($config->url_current));
     }
 });
