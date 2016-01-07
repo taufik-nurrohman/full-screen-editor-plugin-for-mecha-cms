@@ -4,7 +4,7 @@
         name = 'expand plugin-full-screen-editor',
         the_base = d.documentElement,
         the_base_class = the_base.className,
-        the_actions = d.getElementsByName('action')[0].parentNode,
+        the_actions = d.getElementsByName('extension')[0].parentNode,
         the_languages = base.languages.MTE.plugin_full_screen_editor;
     the_actions.className = the_actions.className + ' full-screen-actions';
     base.composer.button(name, {
