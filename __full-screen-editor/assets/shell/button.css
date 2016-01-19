@@ -41,7 +41,7 @@
   border:none;
 }
 
-.MTE-editor-is-expanded .full-screen-actions {
+.MTE-editor-is-expanded .full-screen-editor-action-group {
   float:none;
   display:block;
   width:auto;
@@ -54,7 +54,7 @@
   z-index:9998;
 }
 
-.MTE-editor-is-expanded .full-screen-actions .btn {
+.MTE-editor-is-expanded .full-screen-editor-action-group .btn {
   display:block;
   float:left;
   margin:0 2px 0 0;
