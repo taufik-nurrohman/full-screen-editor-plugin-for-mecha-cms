@@ -16,7 +16,7 @@
         if (!is_expand) {
             the_base.className = the_base_class + ' MTE-editor-is-expanded';
             the_toggle.hash = 'compress';
-            the_toggle.title = the_languages[1];
+            the_toggle.title = the_languages[1] + ' (' + the_languages[2] + ')';
             the_icon.className = the_icon.className.replace(/-expand/, '-compress');
             the_outer.className = the_outer.className + ' active';
             is_expand = true;
@@ -27,7 +27,7 @@
         } else {
             the_base.className = the_base_class;
             the_toggle.hash = 'expand';
-            the_toggle.title = the_languages[0];
+            the_toggle.title = the_languages[0] + ' (' + the_languages[2] + ')';
             the_icon.className = the_icon.className.replace(/-compress/, '-expand');
             the_outer.className = the_outer.className.replace(/ active/, "");
             is_expand = false;
@@ -41,15 +41,20 @@
             'editor': editor
         });
     }
-    base.composer.button(name, {
-        title: the_languages[0],
-        position: 1,
-        click: expand_collapse
-    });
-    var a = d.getElementsByClassName('plugin-full-screen-editor')[0];
-    if (a && a.nodeName.toLowerCase() === 'a') {
-        base.composer.shortcut('CTRL+SHIFT+70', function() {
-            return expand_collapse({target: a}, base.composer);
+    var c = base.composers, n;
+    for (var i in c) {
+        n = 'composer_' + c[i].replace(/\[\]/, '[' + i + ']');
+        base[n].button(name, {
+            title: the_languages[0] + ' (' + the_languages[2] + ')',
+            position: 1,
+            click: expand_collapse
+        });
+        base[n].shortcut('ctrl+shift+f', function(e, the_base) {
+            var nav = e.target.previousSibling || e.target.nextSibling,
+                a = nav ? nav.getElementsByClassName('plugin-full-screen-editor')[0] : false;
+            if (a && a.nodeName.toLowerCase() === 'a') {
+                return expand_collapse({target: a}, the_base), false;
+            }
         });
     }
 })(window, document, DASHBOARD);

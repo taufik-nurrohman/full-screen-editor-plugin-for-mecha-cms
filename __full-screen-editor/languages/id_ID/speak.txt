@@ -1,3 +1,4 @@
 plugin_full_screen_editor:
   0: Masuk Mode Layar Penuh
   1: Keluar Mode Layar Penuh
+  2: ⌘+⇧+F

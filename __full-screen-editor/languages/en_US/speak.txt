@@ -1,3 +1,4 @@
 plugin_full_screen_editor:
   0: Enter Full Screen Mode
   1: Exit Full Screen Mode
+  2: ⌘+⇧+F
